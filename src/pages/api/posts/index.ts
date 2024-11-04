@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 export const prerender = false;
 
 export const GET: APIRoute = async ({ params, request }) => {
@@ -12,7 +12,7 @@ export const GET: APIRoute = async ({ params, request }) => {
 
   console.log(slug);
 
-  const postFind = posts.find((post) => post.slug === slug) || null;
+  const postFind = posts.find((post: any) => post.slug === slug) || null;
   
   if (slug) {
     return new Response(JSON.stringify(postFind), {
