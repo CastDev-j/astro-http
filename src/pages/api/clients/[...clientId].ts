@@ -10,7 +10,7 @@ export const GET: APIRoute = async ({ params, request }) => {
     const response = await db.select().from(Clients).where(eq(Clients.id, +clientId));
 
     if(response.length === 0) {
-      return new Response(JSON.stringify({ msg: "Not Found :c" }), {
+      return new Response(JSON.stringify({ msg: "Not Found" }), {
         status: 404,
         headers: { "Content-Type": "application/json" },
       });
