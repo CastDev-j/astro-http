@@ -11,14 +11,13 @@ export const updatePostLikes = defineAction({
   }),
   handler: async ({ likes, postId }) => {
     const posts = await db.select().from(Posts).where(eq(Posts.id, postId));
-
+    
     if (posts.length === 0) {
       const newPost = {
         id: postId,
         title: "New Post Not Found",
-        likes: 1,
+        likes: 0,
       };
-
       await db.insert(Posts).values(newPost);
       posts.push(newPost);
     }
